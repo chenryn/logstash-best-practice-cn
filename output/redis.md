@@ -48,3 +48,8 @@ Reading messages... (press Ctrl-C to quit)
 ### notification use case
 
 我们还可以用其他程序来订阅 redis 频道，程序里就可以随意写其他逻辑了。你可以看看 [output/juggernaut](http://logstash.net/docs/1.4.2/outputs/juggernaut) 插件的原理。这个 Juggernaut 就是基于 redis 服务器和 socket.io 框架构建的。利用它，logstash 可以直接向 webkit 等支持 socket.io 的浏览器推送告警信息。
+
+## 扩展方式
+
+和 `LogStash::Inputs::Redis` 一样，这里也有设置成 **list** 的方式。使用 `RPUSH` 命令发送给 redis 服务器，效果和之前展示的完全一致。包括可以调整的参数 `batch_event`，也在之前章节中讲过。这里不再重复举例。
+
