@@ -14,3 +14,6 @@ Logstash 最佳实践
 * [Elasticsearch 权威指南](http://fuxiaopang.gitbooks.io/learnelasticsearch/)
 * [Kibana 中文指南](http://chenryn.gitbooks.io/kibana-guide-cn/)
 * [The Logstash Book](http://www.logstashbook.com/)
+
+*欢迎捐赠，作者支付宝账号：<rao.chenlin@gmail.com>*
+
