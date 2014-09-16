@@ -12,7 +12,9 @@ Rsyslog 是 RHEL6 开始的默认系统 syslog 应用软件(当然，RHEL 自带
 
 ![](http://www.rsyslog.com/common/images/rsyslog-features-imagemap.png)
 
-此外，还可以使用 [mmnormalize]() 组件来完成数据的切分(相当于 logstash 的 *filters/grok* 功能)。
+不同模块插件在 rsyslog 流程中发挥作用的原理，可以阅读：<http://www.rsyslog.com/doc/master/configuration/modules/workflow.html>
+
+流程中可以使用 [mmnormalize](http://www.rsyslog.com/doc/master/configuration/modules/mmnormalize.html) 组件来完成数据的切分(相当于 logstash 的 *filters/grok* 功能)。
 
 使用示例见:<http://puppetlabs.com/blog/use-rsyslog-and-elasticsearch-powerful-log-aggregation>
 

@@ -103,4 +103,12 @@ filter {
 }
 ```
 
+### Tips
+
+在和 *codec/multiline* 搭配使用的时候，需要注意一个问题，grok 正则和普通正则一样，默认是不支持匹配回车换行的。就像你需要 `=~ //m` 一样也需要单独指定，具体写法是：
+
+```
+        match => ["message", "(?m)\s+(?<request_time>\d+(?:\.\d+)?)\s+"]
+```
+
 **最后也是最关键的，我强烈建议每个人都要使用 [Grok Debugger](http://grokdebug.herokuapp.com) 来调试自己的 grok 表达式。**
