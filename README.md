@@ -15,5 +15,10 @@ Logstash 最佳实践
 * [Kibana 中文指南](http://chenryn.gitbooks.io/kibana-guide-cn/)
 * [The Logstash Book](http://www.logstashbook.com/)
 
+说明
+=============
+
+因为gitbook不让修改价钱，也不让删除。所以我把markdown格式的内容发布在github上了，见：<https://github.com/chenryn/logstash-best-practice-cn>。没法支付美元的读者可以直接下载github上的内容，然后随机打赏点支付宝：
+
 *欢迎捐赠，作者支付宝账号：<rao.chenlin@gmail.com>*
 
