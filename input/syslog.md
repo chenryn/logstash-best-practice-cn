@@ -58,7 +58,7 @@ filter {
 
 ## 最佳实践
 
-**强烈建议在使用 `LogStash::Inputs::Syslog` 的时候走 TCP 协议来传输数据！**
+**建议在使用 `LogStash::Inputs::Syslog` 的时候走 TCP 协议来传输数据。**
 
 因为具体实现中，UDP 监听器只用了一个线程，而 TCP 监听器会在接收每个连接的时候都启动新的线程来处理后续步骤。
 
@@ -71,6 +71,14 @@ Recv-Q
 ```
 
 228096 是 UDP 接收队列的默认最大大小，这时候 linux 内核开始丢弃数据包了！
+
+**强烈建议使用`LogStash::Inputs::TCP`和 `LogStash::Filters::Grok` 配合实现同样的 syslog 功能！**
+
+虽然 LogStash::Inputs::Syslog 在使用 TCPServer 的时候可以采用多线程处理数据的接收，但是在同一个客户端数据的处理中，其 grok 和 date 是一直在该线程中完成的，这会导致总体上的处理性能几何级的下降 —— 经过测试，TCPServer 每秒可以接收 50000 条数据，而在同一线程中启用 grok 后每秒只能处理 5000 条，再加上 date 只能达到 500 条！
+
+才将这两步拆分到 filters 阶段后，logstash 支持对该阶段插件单独设置多线程运行，大大提高了总体处理性能。在相同环境下， `logstash -f tcp.conf -w 20` 的测试中，总体处理性能可以达到每秒 30000 条数据！
+
+*注：测试采用 logstash 作者提供的 `yes "<44>May 19 18:30:17 snack jls: foo bar 32" | nc localhost 3000` 命令。出处见：<https://github.com/jordansissel/experiments/blob/master/ruby/jruby-netty/syslog-server/Makefile>*
 
 ### 小贴士
 
