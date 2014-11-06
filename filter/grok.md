@@ -112,3 +112,5 @@ filter {
 ```
 
 **最后也是最关键的，我强烈建议每个人都要使用 [Grok Debugger](http://grokdebug.herokuapp.com) 来调试自己的 grok 表达式。**
+
+![grokdebugger](http://www.elasticsearch.org/content/uploads/2014/10/Screen-Shot-2014-10-22-at-00.37.37.png)
