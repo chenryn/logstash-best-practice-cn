@@ -12,7 +12,7 @@ Logstash 最佳实践
 =============
 
 * [Elasticsearch 权威指南](http://fuxiaopang.gitbooks.io/learnelasticsearch/)
-* [Kibana 中文指南](http://chenryn.gitbooks.io/kibana-guide-cn/)
+* [Kibana 中文指南](http://kibana.logstash.es/)
 * [The Logstash Book](http://www.logstashbook.com/)
 
 说明
@@ -21,4 +21,14 @@ Logstash 最佳实践
 因为gitbook不让修改价钱，也不让删除。所以我把markdown格式的内容发布在github上了，见：<https://github.com/chenryn/logstash-best-practice-cn>。没法支付美元的读者可以直接下载github上的内容，然后随机打赏点支付宝：
 
 *欢迎捐赠，作者支付宝账号：<rao.chenlin@gmail.com>*
+
+征集
+=============
+
+logstash 社区目前比较常见的用法，有些是本人并不熟悉的，强烈希望有人可以帮助完成这部分章节：
+
+* windows 平台如何使用 nxlog 传输数据给 logstash
+* 如何使用 logstash-forwarder
+* 如何使用 kafka 消息队列
+
 
