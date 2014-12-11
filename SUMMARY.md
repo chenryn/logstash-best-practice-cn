@@ -20,6 +20,8 @@
    * [时间处理(Date)](filter/date.md)
    * [数据修改(Mutate)](filter/mutate.md)
    * [GeoIP 查询归类](filter/geoip.md)
+   * [JSON 编解码](filter/json.md)
+   * [split 拆分事件](filter/split.md)
    * [UserAgent 匹配归类](filter/useragent.md)
    * [Key-Value 切分](filter/kv.md)
    * [随心所欲的 Ruby 处理](filter/ruby.md)
