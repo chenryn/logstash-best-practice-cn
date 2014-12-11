@@ -12,6 +12,7 @@
    * [读取网络数据(TCP)](input/tcp.md)
    * [读取 Syslog 数据](input/syslog.md)
    * [读取 Redis 数据](input/redis.md)
+   * [读取 Collectd 数据](input/collectd.md)
 * [编码插件(Codec)](codec/README.md)
    * [采用 JSON 编码](codec/json.md)
    * [合并多行数据(Multiline)](codec/multiline.md)
