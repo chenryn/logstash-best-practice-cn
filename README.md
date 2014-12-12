@@ -31,4 +31,7 @@ logstash 社区目前比较常见的用法，有些是本人并不熟悉的，�
 * 如何使用 logstash-forwarder
 * 如何使用 kafka 消息队列
 
+致谢
+=============
 
+感谢 crazw 完成 inputs/collectd 插件介绍章节。

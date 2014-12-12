@@ -43,5 +43,9 @@
 * [深入了解](dive_into/README.md)
    * [自己写一个插件](dive_into/write_your_own.md)
    * [为什么用 JRuby? 能用 MRI 运行么?](dive_into/why_jvm_and_howto_run_with_mri.md)
-   * [其他类似项目](dive_into/similar_projects.md)
-
+* [周边项目](ecosystem/README.md)
+   * [Rsyslog](ecosystem/rsyslog.md)
+   * [nxlog](ecosystem/nxlog.md)
+   * [heka](ecosystem/heka.md)
+   * [Message::Passing](ecosystem/message_passing.md)
+   * [fluent](ecosystem/fluent.md)
