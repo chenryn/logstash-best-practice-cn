@@ -34,4 +34,5 @@ logstash 社区目前比较常见的用法，有些是本人并不熟悉的，�
 致谢
 =============
 
-感谢 crazw 完成 inputs/collectd 插件介绍章节。
+* 感谢 crazw 完成 inputs/collectd 插件介绍章节。
+* 感谢 松涛 完成 ecosystem/nxlog 场景介绍章节。
