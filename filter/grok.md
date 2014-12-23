@@ -18,7 +18,9 @@ Grok 是 Logstash 最重要的插件。你可以在 grok 里预定义好命名�
 input {stdin{}}
 filter {
     grok {
-        match => ["message", "\s+(?<request_time>\d+(?:\.\d+)?)\s+"]
+        match => {
+            "message" => "\s+(?<request_time>\d+(?:\.\d+)?)\s+"
+        }
     }
 }
 output {stdout{}}
@@ -66,7 +68,9 @@ grok 表达式的打印复制格式的完整语法是下面这样的：
 ```
 filter {
     grok {
-        match => ["message", "%{WORD} %{NUMBER:request_time:float} %{WORD}"]
+        match => {
+            "message" => "%{WORD} %{NUMBER:request_time:float} %{WORD}"
+        }
     }
 }
 ```
@@ -97,19 +101,41 @@ filter {
 filter {
     grok {
         patterns_dir => "/path/to/your/own/patterns"
-        match => ["message", "%{SYSLOGBASE} %{DATA:message}"]
+        match => {
+            "message" => "%{SYSLOGBASE} %{DATA:message}"
+        }
         overwrite => ["message"]
     }
 }
 ```
 
-### Tips
+## 小贴士
 
-在和 *codec/multiline* 搭配使用的时候，需要注意一个问题，grok 正则和普通正则一样，默认是不支持匹配回车换行的。就像你需要 `=~ //m` 一样也需要单独指定，具体写法是：
+### 多行匹配
+
+在和 *codec/multiline* 搭配使用的时候，需要注意一个问题，grok 正则和普通正则一样，默认是不支持匹配回车换行的。就像你需要 `=~ //m` 一样也需要单独指定，具体写法是在表达式开始位置加 `(?m)` 标记。如下所示：
 
 ```
-        match => ["message", "(?m)\s+(?<request_time>\d+(?:\.\d+)?)\s+"]
+match => {
+    "message" => "(?m)\s+(?<request_time>\d+(?:\.\d+)?)\s+"
+}
 ```
+
+### 多项选择
+
+有时候我们会碰上一个日志有多种可能格式的情况。这时候要写成单一正则就比较困难，或者全用 `|` 隔开又比较丑陋。这时候，logstash 的语法提供给我们一个有趣的解决方式。
+
+文档中，都说明 logstash/filters/grok 插件的 `match` 参数应该接受的是一个 Hash 值。但是因为早期的 logstash 语法中 Hash 值也是用 `[]` 这种方式书写的，所以其实现在传递 Array 值给 `match` 参数也完全没问题。所以，我们这里其实可以传递多个正则来匹配同一个字段：
+
+```
+match => [
+    "message", "(?<request_time>\d+(?:\.\d+)?)",
+    "message", "%{SYSLOGBASE} %{DATA:message}",
+    "message", "(?m)%{WORD}"
+]
+```
+
+logstash 会按照这个定义次序依次尝试匹配，到匹配成功为止。虽说效果跟用 `|` 分割写个大大的正则是一样的，但是可阅读性好了很多。
 
 **最后也是最关键的，我强烈建议每个人都要使用 [Grok Debugger](http://grokdebug.herokuapp.com) 来调试自己的 grok 表达式。**
 
