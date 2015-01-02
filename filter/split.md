@@ -37,3 +37,5 @@ filter {
 split 插件中使用的是 yield 功能，其结果是 split 出来的新事件，会直接结束其在 filter 阶段的历程，也就是说写在 split 后面的其他 filter 插件都不起作用，进入到 output 阶段。所以，一定要保证 **split 配置写在全部 filter 配置的最后**。
 
 使用了类似功能的还有 clone 插件。
+
+*注：从 logstash-1.5.0beta1 版本以后修复该问题。*
