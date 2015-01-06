@@ -12,6 +12,7 @@ Logstash 最佳实践
 =============
 
 * [Elasticsearch 权威指南](http://fuxiaopang.gitbooks.io/learnelasticsearch/)
+* [精通 Elasticsearch](http://shgy.gitbooks.io/mastering-elasticsearch/)
 * [Kibana 中文指南](http://kibana.logstash.es/)
 * [The Logstash Book](http://www.logstashbook.com/)
 
@@ -36,3 +37,4 @@ logstash 社区目前比较常见的用法，有些是本人并不熟悉的，�
 
 * 感谢 crazw 完成 inputs/collectd 插件介绍章节。
 * 感谢 松涛 完成 ecosystem/nxlog 场景介绍章节。
+* 感谢 LeiTu 完成 ecosystem/logstash-forwarder 介绍章节。

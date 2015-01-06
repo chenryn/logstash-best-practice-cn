@@ -6,13 +6,15 @@ Rsyslog 是 RHEL6 开始的默认系统 syslog 应用软件(当然，RHEL 自带
 
 ![](http://www.rsyslog.com/common/images/rsyslog-features-imagemap.png)
 
+## 常用模块介绍
+
 不同模块插件在 rsyslog 流程中发挥作用的原理，可以阅读：<http://www.rsyslog.com/doc/master/configuration/modules/workflow.html>
 
 流程中可以使用 [mmnormalize](http://www.rsyslog.com/doc/master/configuration/modules/mmnormalize.html) 组件来完成数据的切分(相当于 logstash 的 *filters/grok* 功能)。
 
-使用示例见:<http://puppetlabs.com/blog/use-rsyslog-and-elasticsearch-powerful-log-aggregation>
+rsyslog 从 v7 版本开始带有 *omelasticsearch* 插件可以直接写入数据到 elasticsearch 集群，配合 mmnormalize 的使用示例见: <http://puppetlabs.com/blog/use-rsyslog-and-elasticsearch-powerful-log-aggregation>
 
-而 normalize 语法说明见:<http://www.liblognorm.com/files/manual/index.html?sampledatabase.htm>
+而 normalize 语法说明见: <http://www.liblognorm.com/files/manual/index.html?sampledatabase.htm>
 
 类似的还有 mmjsonparse 组件。
 
@@ -168,3 +170,6 @@ sys.stdout.flush()
 
 注意输出的时候，顶层的 key 是不能变的，msg 还得叫 msg，如果是 hostname 还得叫 hostname ，等等。否则，rsyslog 会当做处理无效，直接传递原有数据内容给下一步。
 
+**慎用提示**
+
+从实际运行效果看，rsyslog 对 mmexternal 的程序没有最大并发数限制！所以如果你发送的数据量较大的事情，rsyslog 并不会像普通的转发模式那样缓冲在磁盘队列上，而是**持续 fork 出新的 mmexternal 程序**，几千个进程后，你的服务器就挂了！！

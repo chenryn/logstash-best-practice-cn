@@ -47,6 +47,7 @@
    * [为什么用 JRuby? 能用 MRI 运行么?](dive_into/why_jvm_and_howto_run_with_mri.md)
 * [周边项目](ecosystem/README.md)
    * [Rsyslog](ecosystem/rsyslog.md)
+   * [logstash-forwarder](ecosystem/logstash_forwarder.md)
    * [nxlog](ecosystem/nxlog.md)
    * [heka](ecosystem/heka.md)
    * [Message::Passing](ecosystem/message_passing.md)

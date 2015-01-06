@@ -46,6 +46,8 @@ output {stdout{}}
 
 Grok 支持把预定义的 *grok 表达式* 写入到文件中，官方提供的预定义 grok 表达式见：<https://github.com/logstash/logstash/tree/v1.4.2/patterns>。
 
+**注意：在新版本的logstash里面，pattern目录已经为空，最后一个commit提示core patterns将会由logstash-patterns-core gem来提供，该目录可供用户存放自定义patterns**
+
 下面是从官方文件中摘抄的最简单但是足够说明用法的示例：
 
 ```
