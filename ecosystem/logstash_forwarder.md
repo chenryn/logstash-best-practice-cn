@@ -1,10 +1,10 @@
 ##Logstash Forwarder
 
-Redis已经帮我们解决了很多的问题，而且也很轻量，为什么我们还需要logstash－forwarder呢？
+Redis已经帮我们解决了很多的问题，而且也很轻量，为什么我们还需要logstash-forwarder呢？
 
 >Redis provides simple authentication but no transport-layer encryption or authorization. This is perfectly fine in trusted environments. However, if you're connecting to Redis between datacenters you will probably want to use encryption.
 
->他很好，但是他不secure
+>简而言之他很好，但是他不secure。
 
 
 我们如何来配置logstash－forwarder。
@@ -108,7 +108,7 @@ EOF
 sudo service logstash-forwarder start
 ```
 
-我们已完成了配置，当重启logstash－forwarder之后，你就可以在kibana上看到你的日志了
+我们已完成了配置，当重启logstash-forwarder之后，你就可以在kibana上看到你的日志了
 
 请记住一下
 
