@@ -78,6 +78,8 @@ match => [ "field1", "pattern1", "field2", "pattern2" ]
 [geoip][location][0]
 ```
 
+*小贴士：logstash 的数组也支持倒序下标，即 `[geoip][location][-1]` 可以获取数组最后一个元素的值。*
+
 Logstash 还支持变量内插，在字符串里使用字段引用的方法是这样：
 
 ```
