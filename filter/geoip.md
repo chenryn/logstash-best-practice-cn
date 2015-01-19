@@ -41,6 +41,28 @@ filter {
 }
 ```
 
+## 配置说明
+
+GeoIP 库数据较多，如果你不需要这么多内容，可以通过 `fields` 选项指定自己所需要的。下例为全部可选内容：
+
+```
+filter {
+    geoip {
+        fields => ["city_name", "continent_code", "country_code2", "country_code3", "country_name", "dma_code", "ip", "latitude", "longitude", "postal_code", "region_name", "timezone"]
+    }
+}
+```
+
+需要注意的是：`geoip.location` 是 logstash 通过 `latitude` 和 `longitude` 额外生成的数据。所以，如果你是想要经纬度又不想重复数据的话，应该像下面这样做：
+
+filter {
+    geoip {
+        fields => ["city_name", "country_code2", "country_name", "latitude", "longitude", "region_name"]
+        remove_field => ["latitude", "longitude"]
+    }
+}
+```
+
 ## 小贴士
 
 geoip 插件的 "source" 字段可以是任一处理后的字段，比如 "client_ip"，但是字段内容却需要小心！geoip 库内只存有公共网络上的 IP 信息，查询不到结果的，会直接返回 null，而 logstash 的 geoip 插件对 null 结果的处理是：**不生成对应的 geoip.字段。**
