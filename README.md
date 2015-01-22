@@ -38,3 +38,4 @@ logstash 社区目前比较常见的用法，有些是本人并不熟悉的，�
 * 感谢 crazw 完成 inputs/collectd 插件介绍章节。
 * 感谢 松涛 完成 ecosystem/nxlog 场景介绍章节。
 * 感谢 LeiTu 完成 ecosystem/logstash-forwarder 介绍章节。
+* 感谢 jingbli 完成 contrib_plugins/kafka 插件介绍章节。
