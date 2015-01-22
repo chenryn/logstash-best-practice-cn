@@ -9,12 +9,19 @@
 ##安装
 
 * 安装按照官方文档完全自动化的安装.或是可以通过以下方式手动自己安装插件,不过重点注意的是**kafka的版本**,上面已经指出了.
+
 > 1. 下载logstash并解压重命名为`./logstash-1.4.0`文件目录.
+
 > 2. 下载kafka相关组件,以下示例选的为[kafka_2.8.0-0.8.1.1-src](https://www.apache.org/dyn/closer.cgi?path=/kafka/0.8.1.1/kafka-0.8.1.1-src.tgz),并解压重命名为`./kafka_2.8.0-0.8.1.1`.
+
 > 3. 下载logstash-kafka v0.4.2 从[releases](https://github.com/joekiller/logstash-kafka/releases),并解压重命名为`./logstash-kafka-0.4.2`.
+
 > 4. 从`./kafka_2.8.0-0.8.1.1/libs`目录下复制所有的jar文件拷贝到`./logstash-1.4.0/vendor/jar/kafka_2.8.0-0.8.1.1/libs`下,其中你需要创建`kafka_2.8.0-0.8.1.1/libs`相关文件夹及目录.
+
 > 5. 分别复制`./logstash-kafka-0.4.2/logstash`里的`inputs`和`outputs`下的`kafka.rb`,拷贝到对应的`./logstash-1.4.0/lib/logstash`里的`inputs`和`outputs`对应目录下.
+
 > 6. 切换到`./logstash-1.4.0`目录下，现在需要运行logstash-kafka的gembag.rb脚本去安装jruby-kafka库，执行以下命令： `GEM_HOME=vendor/bundle/jruby/1.9 GEM_PATH= java -jar vendor/jar/jruby-complete-1.7.11.jar --1.9 ../logstash-kafka-0.4.2/gembag.rb ../logstash-kafka-0.4.2/logstash-kafka.gemspec`
+
 > 7. 现在可以使用logstash-kafka插件运行logstash了。例如：`bin/logstash agent -f logstash.conf`.
 
 ##Iput配置示例
