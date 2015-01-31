@@ -9,7 +9,7 @@
 ```
 output {
     file {
-        path => "/path/to/%{+yyyy/MM/dd/HH}/%{host}.log.tar.gz"
+        path => "/path/to/%{+yyyy/MM/dd/HH}/%{host}.log.gz"
         message_format => "%{message}"
         gzip => true
     }
