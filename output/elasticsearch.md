@@ -45,6 +45,19 @@ local 192.168.0.2    7      d         *      Sunstreak
 * Kibana4 强制要求 ES 全集群所有 node 版本在 1.4 以上，所以采用 node 方式发送数据的 logstash 会导致 Kibana4 无法运行，采用 Kibana4 的读者务必改用 http 方式。
 * 开发者在 IRC freenode#logstash 频道里表示："高于 1.0 版本的 Elasticsearch 应该都能跟最新版 logstash 的 node 协议一起正常工作"。此信息仅供参考，请认真测试后再上线。
 
+#### 性能问题
+
+Logstash 1.4.2 在 http 协议下默认使用作者自己的 ftw 库，随同分发的是 0.0.39 版。该版本有[内存泄露问题](https://github.com/elasticsearch/logstash/issues/1604)，长期运行下输出性能越来越差！
+
+解决办法：
+
+1. 对性能要求不高的，可以在启动 logstash 进程时，配置环境变量ENV["BULK"]，强制采用 elasticsearch 官方 Ruby 库。命令如下：
+
+    export BULK="esruby"
+
+2. 对性能要求高的，可以尝试采用 logstash-1.5.0beta1 。新版的 outputs/elasticsearch 放弃了 ftw 库，改用了一个 JRuby 平台专有的 [Manticore 库](https://github.com/cheald/manticore/wiki/Performance)。根据测试，性能跟 ftw 比[相当接近](https://github.com/elasticsearch/logstash/pull/1777)。
+3. 对性能要求极高的，可以手动更新 ftw 库版本，目前最新版是 0.0.42 版，据称内存问题在 0.0.40 版即解决。
+
 ### 模板
 
 Elasticsearch 支持给索引预定义设置和 mapping(前提是你用的 elasticsearch 版本支持这个 API，不过估计应该都支持)。Logstash 自带有一个优化好的模板，内容如下:
