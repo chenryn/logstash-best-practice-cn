@@ -180,3 +180,38 @@ filter {
 * replace
 
 作用和 update 类似，但是当字段不存在的时候，它会起到 `add_field` 参数一样的效果，自动添加新的字段。
+
+
+## 执行次序
+
+需要注意的是，filter/mutate 内部是有执行次序的。其次序如下：
+
+```
+    rename(event) if @rename
+    update(event) if @update
+    replace(event) if @replace
+    convert(event) if @convert
+    gsub(event) if @gsub
+    uppercase(event) if @uppercase
+    lowercase(event) if @lowercase
+    strip(event) if @strip
+    remove(event) if @remove
+    split(event) if @split
+    join(event) if @join
+    merge(event) if @merge
+
+    filter_matched(event)
+```
+
+而 `filter_matched` 这个 filters/base.rb 里继承的方法也是有次序的。
+
+```
+  @add_field.each do |field, value|
+  end
+  @remove_field.each do |field|
+  end
+  @add_tag.each do |tag|
+  end
+  @remove_tag.each do |tag|
+  end
+```

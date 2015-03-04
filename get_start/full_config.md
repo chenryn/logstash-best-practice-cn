@@ -78,6 +78,8 @@ match => [ "field1", "pattern1", "field2", "pattern2" ]
 [geoip][location][0]
 ```
 
+*小贴士：logstash 的数组也支持倒序下标，即 `[geoip][location][-1]` 可以获取数组最后一个元素的值。*
+
 Logstash 还支持变量内插，在字符串里使用字段引用的方法是这样：
 
 ```
@@ -122,21 +124,27 @@ output {
 }
 ```
 
-* -f
+* --config 或 -f
 
 意即*文件*。真实运用中，我们会写很长的配置，甚至可能超过 shell 所能支持的 1024 个字符长度。所以我们必把配置固化到文件里，然后通过 `bin/logstash -f agent.conf` 这样的形式来运行。
 
-* -l
+此外，logstash 还提供一个方便我们规划和书写配置的小功能。你可以直接用 `bin/logstash -f /etc/logstash.d/` 来运行。logstash 会自动读取 `/etc/logstash.d/` 目录下所有的文本文件，然后在自己内存里拼接成一个完整的大配置文件，再去执行。
+
+* --configtest 或 -t
+
+意即*测试*。用来测试 Logstash 读取到的配置文件语法是否能正常解析。Logstash 配置语法是用 grammar.treetop 定义的。尤其是使用了上一条提到的读取目录方式的读者，尤其要提前测试。
+
+* --log 或 -l
 
 意即*日志*。Logstash 默认输出日志到标准错误。生产环境下你可以通过 `bin/logstash -l logs/logstash.log` 命令来统一存储日志。
 
-* -w
+* --filterworkers 或 -w
 
 意即*工作线程*。Logstash 会运行多个线程。你可以用 `bin/logstash -w 5` 这样的方式强制 Logstash 为**过滤**插件运行 5 个线程。
 
 *注意：Logstash目前还不支持输入插件的多线程。而输出插件的多线程需要在配置内部设置，这个命令行参数只是用来设置过滤插件的！*
 
-* --pluginpath
+* --pluginpath 或 -P
 
 可以写自己的插件，然后用 `bin/logstash --pluginpath /path/to/own/plugins` 加载它们。
 

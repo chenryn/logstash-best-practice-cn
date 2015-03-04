@@ -27,6 +27,14 @@ end
 * config 可以定义很多个，即该插件在 logstash 配置文件中的可配置参数。logstash 很温馨的提供了验证方法，确保接收的数据是你期望的数据类型；
 * register logstash 在启动的时候运行的函数，一些需要常驻内存的数据，可以在这一步先完成。比如对象初始化，*filters/ruby* 插件中的 `init` 语句等。
 
+*小贴士*
+
+milestone 级别在 3 以下的，logstash 默认为不足够稳定，会在启动阶段，读取到该插件的时候，输出类似下面这样的一行提示信息，日志级别是 warn。**这不代表运行出错**！只是提示如果用户碰到 bug，欢迎提供线索。
+
+> {:timestamp=>"2015-02-06T10:37:26.312000+0800", :message=>"Using milestone 2 input plugin 'file'. This plugin should be stable, but if you see strange behavior, please let us know! For more information on plugin milestones, see http://logstash.net/docs/1.4.2-modified/plugin-milestones", :level=>:warn}
+
+## 插件的关键方法
+
 输入插件独有的是 run 方法。在 run 方法中，必须实现一个长期运行的程序(最简单的就是 loop 指令)。然后在每次收到数据并处理成 `event` 之后，一定要调用 `queue << event` 语句。一个输入流程就算是完成了。
 
 而如果是过滤器插件，对应修改成：

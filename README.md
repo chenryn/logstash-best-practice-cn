@@ -12,6 +12,7 @@ Logstash 最佳实践 (此书fork自陈子的github)
 =============
 
 * [Elasticsearch 权威指南](http://fuxiaopang.gitbooks.io/learnelasticsearch/)
+* [精通 Elasticsearch](http://shgy.gitbooks.io/mastering-elasticsearch/)
 * [Kibana 中文指南](http://kibana.logstash.es/)
 * [The Logstash Book](http://www.logstashbook.com/)
 
@@ -28,11 +29,14 @@ Logstash 最佳实践 (此书fork自陈子的github)
 logstash 社区目前比较常见的用法，有些是本人并不熟悉的，强烈希望有人可以帮助完成这部分章节：
 
 * <del>windows 平台如何使用 nxlog 传输数据给 logstash</del>
-* 如何使用 logstash-forwarder
-* 如何使用 kafka 消息队列
+* <del>如何使用 logstash-forwarder</del>
+* <del>如何使用 kafka 消息队列</del>
+* 和 statsd/graphite 的配合
 
 致谢
 =============
 
 * 感谢 crazw 完成 inputs/collectd 插件介绍章节。
 * 感谢 松涛 完成 ecosystem/nxlog 场景介绍章节。
+* 感谢 LeiTu 完成 ecosystem/logstash-forwarder 介绍章节。
+* 感谢 jingbli 完成 contrib_plugins/kafka 插件介绍章节。
