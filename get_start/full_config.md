@@ -144,6 +144,8 @@ output {
 
 *注意：Logstash目前还不支持输入插件的多线程。而输出插件的多线程需要在配置内部设置，这个命令行参数只是用来设置过滤插件的！*
 
+**提示：Logstash 目前不支持对过滤器线程的监测管理。如果 filterworker 挂掉，Logstash 会处于一个无 filter 的僵死状态。这种情况在使用 filter/ruby 自己写代码时非常需要注意，很容易碰上 `NoMethodError: undefined method '*' for nil:NilClass` 错误。需要妥善处理，提前判断。**
+
 * --pluginpath 或 -P
 
 可以写自己的插件，然后用 `bin/logstash --pluginpath /path/to/own/plugins` 加载它们。
