@@ -6,7 +6,7 @@
 
 一个标准的 logstash 输入插件格式如下：
 
-```
+```ruby
 require 'logstash/namespace'
 require 'logstash/inputs/base'
 class LogStash::Inputs::MyPlugin < LogStash::Inputs::Base
@@ -39,7 +39,7 @@ milestone 级别在 3 以下的，logstash 默认为不足够稳定，会在启�
 
 而如果是过滤器插件，对应修改成：
 
-```
+```ruby
 require 'logstash/filters/base'
 class LogStash::Filters::MyPlugin < LogStash::Filters::Base
   public def filter(event)
@@ -49,7 +49,7 @@ end
 
 输出插件则是：
 
-```
+```ruby
 require 'logstash/outputs/base'
 class LogStash::Outputs::MyPlugin < LogStash::Outputs::Base
   public def receive(event)
@@ -59,7 +59,7 @@ end
 
 另外，为了在终止进程的时候不遗失数据，建议都实现如下这个方法，只要实现了，logstash 在 shutdown 的时候就会自动调用：
 
-```
+```ruby
 public def teardown
 end
 ```
