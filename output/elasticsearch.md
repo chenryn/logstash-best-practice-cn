@@ -42,7 +42,7 @@ local 192.168.0.2    7      d         *      Sunstreak
 #### 小贴士
 
 * Logstash 1.4.2 在 transport 和 http 协议的情况下是固定连接指定 host 发送数据。从 1.5.0 开始，host 可以设置数组，它会从节点列表中选取不同的节点发送数据，达到 Round-Robin 负载均衡的效果。
-* Kibana4 强制要求 ES 全集群所有 node 版本在 1.4 以上，所以采用 node 方式发送数据的 logstash 会导致 Kibana4 无法运行，采用 Kibana4 的读者务必改用 http 方式。
+* Kibana4 强制要求 ES 全集群所有 node 版本在 1.4 以上，所以采用 node 方式发送数据的 logstash-1.4(携带的 Elasticsearch.jar 库是 1.1.1 版本) 会导致 Kibana4 无法运行，采用 Kibana4 的读者务必改用 http 方式。
 * 开发者在 IRC freenode#logstash 频道里表示："高于 1.0 版本的 Elasticsearch 应该都能跟最新版 logstash 的 node 协议一起正常工作"。此信息仅供参考，请认真测试后再上线。
 
 #### 性能问题
@@ -55,7 +55,7 @@ Logstash 1.4.2 在 http 协议下默认使用作者自己的 ftw 库，随同分
 
     export BULK="esruby"
 
-2. 对性能要求高的，可以尝试采用 logstash-1.5.0beta1 。新版的 outputs/elasticsearch 放弃了 ftw 库，改用了一个 JRuby 平台专有的 [Manticore 库](https://github.com/cheald/manticore/wiki/Performance)。根据测试，性能跟 ftw 比[相当接近](https://github.com/elasticsearch/logstash/pull/1777)。
+2. 对性能要求高的，可以尝试采用 logstash-1.5.0RC2 。新版的 outputs/elasticsearch 放弃了 ftw 库，改用了一个 JRuby 平台专有的 [Manticore 库](https://github.com/cheald/manticore/wiki/Performance)。根据测试，性能跟 ftw 比[相当接近](https://github.com/elasticsearch/logstash/pull/1777)。
 3. 对性能要求极高的，可以手动更新 ftw 库版本，目前最新版是 0.0.42 版，据称内存问题在 0.0.40 版即解决。
 
 ### 模板
