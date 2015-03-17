@@ -59,7 +59,7 @@ Logstash 会给事件添加一些额外信息。最重要的就是 **@timestamp*
 
 你可以随意给事件添加字段或者从事件里删除字段。事实上事件就是一个 Ruby 对象，或者更简单的理解为就是一个哈希也行。
 
-*小贴士：每个 logstash 插件，不管是输入、过滤还是输出，都会有几个方法叫 `add_tag`, `remove_tag`, `add_field` 和 `remove_field`。*
+*小贴士：每个 logstash 过滤插件，都会有四个方法叫 `add_tag`, `remove_tag`, `add_field` 和 `remove_field`。它们在插件过滤匹配成功时生效。*
 
 ## 推荐阅读
 
