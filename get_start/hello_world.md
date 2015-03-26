@@ -63,4 +63,5 @@ Logstash 会给事件添加一些额外信息。最重要的就是 **@timestamp*
 
 ## 推荐阅读
 
-* [the life of an event](http://logstash.net/docs/1.4.2/life-of-an-event)
+* [《the life of an event》官网文档](http://logstash.net/docs/1.4.2/life-of-an-event)
+* [《life of a logstash event》Elastic{ON} 上的演讲](https://speakerdeck.com/elastic/life-of-a-logstash-event)
