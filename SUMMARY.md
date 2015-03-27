@@ -5,6 +5,7 @@
    * [介绍](get_start/introduction.md)
    * [安装](get_start/install.md)
    * [Hello World](get_start/hello_world.md)
+   * [长期运行](get_start/daemon.md)
    * [配置语法](get_start/full_config.md)
 * [输入插件(Input)](input/README.md)
    * [标准输入(Stdin)](input/stdin.md)
