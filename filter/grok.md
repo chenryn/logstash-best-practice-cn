@@ -63,7 +63,7 @@ grok 表达式的打印复制格式的完整语法是下面这样的：
 %{PATTERN_NAME:capture_name:data_type}
 ```
 
-*小贴士：dateype 目前只支持两个值：`int` 和 `float`。*
+*小贴士：data_type 目前只支持两个值：`int` 和 `float`。*
 
 所以我们可以改进我们的配置成下面这样：
 
