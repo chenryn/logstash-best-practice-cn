@@ -125,7 +125,7 @@ doc_values 是 Elasticsearch 1.3 版本引入的新特性。启用该特性的�
 
 > ElasticsearchException[org.elasticsearch.common.breaker.CircuitBreakingException: Data too large, data for field [@timestamp] would be larger than limit of [639015321/609.4mb]]
 
-doc_values 只能给设置了 `"index":"not_analyzed"` 的字段配置生效。(也就意味着只有 string 和 date 类型支持这个特性)
+doc_values 只能给不分词(对于字符串字段就是设置了 `"index":"not_analyzed"`，数值和时间字段默认就没有分词) 的字段配置生效。
 
 doc_values 虽然用的是磁盘，但是系统本身也有自带 VFS 的 cache 效果并不会太差。据官方测试，经过 1.4 的优化后，只比使用内存的 fielddata 慢 15% 。所以，在数据量较大的情况下，**强烈建议开启**该配置：
 
