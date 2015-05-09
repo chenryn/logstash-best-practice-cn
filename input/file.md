@@ -32,7 +32,7 @@ logstash 每隔多久去检查一次被监听的 `path` 下是否有新文件。
 
 * sincedb_path
 
-如果你不想用默认的 `$HOME/.sincedb`，可以通过这个配置定义 sincedb 文件到其他位置。
+如果你不想用默认的 `$HOME/.sincedb`(Windows 平台上在 `C:\Windows\System32\config\systemprofile\.sincedb`)，可以通过这个配置定义 sincedb 文件到其他位置。
 
 * sincedb_write_interval
 
