@@ -58,7 +58,7 @@ filter {
 filter {
     geoip {
         fields => ["city_name", "country_code2", "country_name", "latitude", "longitude", "region_name"]
-        remove_field => ["latitude", "longitude"]
+        remove_field => ["[geoip][latitude]", "[geoip][longitude]"]
     }
 }
 ```
