@@ -1,4 +1,4 @@
-Logstash 最佳实践
+Logstash 最佳实践 (此书fork自 chenryn)
 =======================
 
 **Logstash is a tool for managing events and logs. You can use it to collect logs, parse them, and store them for later use (like, for searching).**
