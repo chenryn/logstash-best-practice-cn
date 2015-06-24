@@ -29,7 +29,7 @@ This plugin based on HDFS api of Hadoop, it import java classes like `org.apache
 ### Configuration
 
 ```
-input {
+output {
     hdfs {
         path => "/path/to/output_file.log"
         enable_append => true
