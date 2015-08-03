@@ -73,11 +73,11 @@ yum -y install supervisord --enablerepo=epel
 
 ```
 [program:elkpro_1]
-environment=ES_HEAP_SIZE=5000m
+environment=LS_HEAP_SIZE=5000m
 directory=/opt/logstash
 command=/opt/logstash/bin/logstash -f /etc/logstash/pro1.conf --pluginpath /opt/logstash/plugins/ -w 10 -l /var/log/logstash/pro1.log
 [program:elkpro_2]
-environment=ES_HEAP_SIZE=5000m
+environment=LS_HEAP_SIZE=5000m
 directory=/opt/logstash
 command=/opt/logstash/bin/logstash -f /etc/logstash/pro2.conf --pluginpath /opt/logstash/plugins/ -w 10 -l /var/log/logstash/pro2.log
 ```
@@ -87,6 +87,4 @@ command=/opt/logstash/bin/logstash -f /etc/logstash/pro2.conf --pluginpath /opt/
 logstash 会以 supervisord 子进程的身份运行，你还可以使用 `supervisorctl` 命令，单独控制一系列 logstash 子进程中某一个进程的启停操作：
 
 `supervisorctl stop elkpro_2`
-
-注意：这种方式下如果需要修改heap大小，请在命令行中使用supervisorctl update elkpro_1来更新配置重启节点生效.
 
