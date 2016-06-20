@@ -191,3 +191,5 @@ JIT - r9_20130517_38390
 GC - GA24_Java6_SR14_20130704_1138_B155156)
 JCL - 20130618_01
 ```
+
+*注意：lumberjack input在压力的情况下可能会出现管道堵塞，进而产生内存溢出，最终导致你的indexer挂掉，所有的event无法进入es。这个issue正在open，详见：https://github.com/logstash-plugins/logstash-input-lumberjack/issues/10*
